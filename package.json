@@ -1,7 +1,7 @@
 {
   "name": "@zseven-w/dsh-xcode",
   "version": "0.1.0-rc.1",
-  "description": "Official Xcode MCP bridge (`xcrun mcpbridge`) & Apple Skills integration for DeepSeek Harness — single-file compiler diagnostics, native SwiftUI `#Preview` rendering, warm scheme builds/tests, Apple documentation search, and seamless pairing with dsh-ios.",
+  "description": "DeepSeek Harness (DSH) plugin for Apple's official Xcode MCP bridge (xcrun mcpbridge) and Apple Skills — sub-second single-file compiler diagnostics, native SwiftUI #Preview rendering, warm scheme builds and tests, local Apple documentation search, and live pairing with dsh-ios.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -42,10 +42,17 @@
     "xcode",
     "mcp",
     "mcpbridge",
+    "model-context-protocol",
+    "apple",
     "ios",
     "macos",
     "swift",
-    "swiftui"
+    "swiftui",
+    "ai-agent",
+    "ai-agents",
+    "coding-agent",
+    "plugin",
+    "typescript"
   ],
   "engines": {
     "node": ">=24.11.0"
