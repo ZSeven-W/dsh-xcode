@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; 目前的外掛版本：<code>0.1.0-rc.3</code> &middot; 已在 DSH <code>0.2.1-rc.5</code> 下測試</sub>
+  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; 目前的外掛版本：<code>0.1.0-rc.4</code> &middot; 已在 DSH <code>0.2.1-rc.5</code> 下測試</sub>
 </p>
 
 <p align="center">

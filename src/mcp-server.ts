@@ -24,7 +24,7 @@ import {
 } from './skills.ts'
 
 export const MCP_SERVER_NAME = 'dsh-xcode'
-export const MCP_SERVER_VERSION = '0.1.0-rc.3'
+export const MCP_SERVER_VERSION = '0.1.0-rc.4'
 const MAX_MESSAGE_BYTES = 32 * 1024 * 1024
 
 export interface McpToolSchema {

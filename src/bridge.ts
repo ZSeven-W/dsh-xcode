@@ -308,7 +308,7 @@ export class XcodeBridgeController {
 
   peerSnapshot() {
     return {
-      version: '0.1.0-rc.3',
+      version: '0.1.0-rc.4',
       connected: this.session?.isAlive === true,
       mcpbridgeAvailable: this.lastEnv?.bridge.available ?? (process.platform === 'darwin'),
       ...(this.lastEnv?.xcodeVersion?.version ? { xcodeVersion: this.lastEnv.xcodeVersion.version } : {}),

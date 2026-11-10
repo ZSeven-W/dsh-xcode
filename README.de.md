@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Aktuelles Plugin-Release: <code>0.1.0-rc.3</code> &middot; Getestet mit DSH <code>0.2.1-rc.5</code></sub>
+  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Aktuelles Plugin-Release: <code>0.1.0-rc.4</code> &middot; Getestet mit DSH <code>0.2.1-rc.5</code></sub>
 </p>
 
 <p align="center">

@@ -489,7 +489,7 @@ var McpStdioSession = class {
         capabilities: {},
         clientInfo: {
           name: "@zseven-w/dsh-xcode",
-          version: "0.1.0-rc.3"
+          version: "0.1.0-rc.4"
         }
       },
       this.handshakeTimeoutMs,
@@ -860,7 +860,7 @@ var XcodeBridgeController = class {
   }
   peerSnapshot() {
     return {
-      version: "0.1.0-rc.3",
+      version: "0.1.0-rc.4",
       connected: this.session?.isAlive === true,
       mcpbridgeAvailable: this.lastEnv?.bridge.available ?? process.platform === "darwin",
       ...this.lastEnv?.xcodeVersion?.version ? { xcodeVersion: this.lastEnv.xcodeVersion.version } : {},
@@ -1418,7 +1418,7 @@ async function exportAppleSkillsFromXcode(options) {
 
 // src/mcp-server.ts
 var MCP_SERVER_NAME = "dsh-xcode";
-var MCP_SERVER_VERSION = "0.1.0-rc.3";
+var MCP_SERVER_VERSION = "0.1.0-rc.4";
 var MAX_MESSAGE_BYTES = 32 * 1024 * 1024;
 var workspaceDirProperty = {
   type: "string",
