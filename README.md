@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./icon.svg" alt="DSH Xcode" width="96" />
+  <img src="./docs/images/dsh-xcode-logo.png" alt="DSH Xcode" width="120" />
 </p>
 
 <h1 align="center">DSH Xcode</h1>
@@ -24,6 +24,10 @@
 </p>
 
 <br />
+
+<p align="center">
+  <img src="./docs/images/dsh-xcode-banner.png" alt="DSH Xcode — Official Xcode MCP bridge &amp; Apple Skills inside DeepSeek Harness" width="100%" />
+</p>
 
 ## Why DSH Xcode
 

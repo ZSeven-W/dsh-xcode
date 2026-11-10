@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./icon.svg" alt="DSH Xcode" width="96" />
+  <img src="./docs/images/dsh-xcode-logo.png" alt="DSH Xcode" width="120" />
 </p>
 
 <h1 align="center">DSH Xcode 工作台</h1>
@@ -24,6 +24,10 @@
 </p>
 
 <br />
+
+<p align="center">
+  <img src="./docs/images/dsh-xcode-banner.png" alt="DSH Xcode — 在 DeepSeek Harness 中直连 Apple 官方 Xcode MCP 桥接与内置 Apple Skills" width="100%" />
+</p>
 
 ## 为什么选择 DSH Xcode
 
