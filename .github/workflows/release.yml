@@ -1,0 +1,57 @@
+# Publish to npm when a version tag is pushed.
+#
+# Authentication: npm trusted publishing (OIDC) only. The workflow proves its
+# identity to the registry (hence `permissions.id-token: write`); there is no
+# token secret and nothing to log in to. Configure once via npm-oidc-setup.sh
+# or npmjs.com -> package -> Settings -> Trusted Publisher -> GitHub Actions
+# (`ZSeven-W/dsh-xcode`, `release.yml`).
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.0'
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install -g npm@11
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Verify the tag matches package.json
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$pkg" ]; then
+            echo "tag $tag does not match package.json $pkg" >&2
+            exit 1
+          fi
+
+      - run: pnpm run typecheck
+      - run: pnpm test
+      - run: pnpm run smoke:pack
+
+      - name: Publish
+        run: |
+          name="$(node -p "require('./package.json').name")"
+          pkg="$(node -p "require('./package.json').version")"
+          if npm view "$name@$pkg" version >/dev/null 2>&1; then
+            echo "$name@$pkg is already on the registry — nothing to publish."
+            exit 0
+          fi
+          npm publish --access public --tag latest

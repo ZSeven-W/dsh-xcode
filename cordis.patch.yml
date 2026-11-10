@@ -1,0 +1,6 @@
+# dsh-xcode bundle patch: mounts the plugin into a profile layer stack.
+# Override `config` in your profile's cordis.patch.yml, e.g.
+#   config: { xcodePid: 12345, callTimeoutMs: 180000, autoSyncSkills: true }
+- insert:
+    - id: dsh-xcode
+      name: '@zseven-w/dsh-xcode'

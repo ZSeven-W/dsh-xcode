@@ -1,0 +1,122 @@
+{
+  "name": "@zseven-w/dsh-xcode",
+  "version": "0.1.0-rc.1",
+  "description": "Official Xcode MCP bridge (`xcrun mcpbridge`) & Apple Skills integration for DeepSeek Harness — single-file compiler diagnostics, native SwiftUI `#Preview` rendering, warm scheme builds/tests, Apple documentation search, and seamless pairing with dsh-ios.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZSeven-W/dsh-xcode.git"
+  },
+  "homepage": "https://github.com/ZSeven-W/dsh-xcode#readme",
+  "bugs": {
+    "url": "https://github.com/ZSeven-W/dsh-xcode/issues"
+  },
+  "type": "module",
+  "packageManager": "pnpm@11.21.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "locale/*.json",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "README.*.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "xcode",
+    "mcp",
+    "mcpbridge",
+    "ios",
+    "macos",
+    "swift",
+    "swiftui"
+  ],
+  "engines": {
+    "node": ">=24.11.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm run build && node --test test/*.test.mjs",
+    "smoke:pack": "node scripts/smoke-pack.mjs",
+    "prepack": "pnpm run build && pnpm run typecheck",
+    "prepublishOnly": "pnpm test && pnpm run smoke:pack"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-tool",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    },
+    "capabilities": [
+      "client-injection",
+      "env-read",
+      "subprocess",
+      "tool-registration"
+    ]
+  },
+  "dshHostRuntime": {
+    "server": {
+      "requiredServices": [
+        "tools",
+        "workingDirectory"
+      ],
+      "optionalServices": [
+        "commands",
+        "skills",
+        "attachments",
+        "llm"
+      ],
+      "requiredPackages": {
+        "@deepseek-ai/dsh-tools": "0.2.1-rc.5"
+      }
+    },
+    "client": {
+      "requiredServices": [
+        "slots",
+        "locale",
+        "remote",
+        "remote.workspaceFiles",
+        "remote.commands",
+        "sidebarRight",
+        "sidebarRightTabs"
+      ],
+      "requiredPackages": {
+        "react": "^18.2.0"
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "~18.3.1",
+    "esbuild": "^0.25.0",
+    "react": "^18.2.0",
+    "typescript": "^5.8.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Xcode 工作台",
+    "description": "接入 Apple 官方 xcrun mcpbridge 与内置 Skills：单文件秒级查错、SwiftUI 预览渲染、增量编译测试与 Apple 文档检索。"
+  }
+}

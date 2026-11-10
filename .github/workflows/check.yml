@@ -1,0 +1,48 @@
+# Build, typecheck, run the fixture test suite, and verify the packed tarball on
+# every push and PR across Linux and macOS.
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: ['main']
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Node ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: ['24.11.0', '26']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build & test
+        run: pnpm test
+
+      - name: Smoke packed tarball
+        if: matrix.node == '24.11.0'
+        run: pnpm run smoke:pack

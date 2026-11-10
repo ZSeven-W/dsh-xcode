@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Xcode Workbench",
+    "description": "Connect Apple's official xcrun mcpbridge and built-in Skills: single-file diagnostics, SwiftUI preview rendering, warm scheme builds/tests, and Apple documentation search."
+  }
+}
