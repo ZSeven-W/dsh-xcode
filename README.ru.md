@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Текущий релиз плагина: <code>0.1.0-rc.1</code> &middot; Протестировано с DSH <code>0.2.1-rc.5</code></sub>
+  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Текущий релиз плагина: <code>0.1.0-rc.2</code> &middot; Протестировано с DSH <code>0.2.1-rc.5</code></sub>
 </p>
 
 <p align="center">

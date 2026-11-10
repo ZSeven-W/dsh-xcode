@@ -320,7 +320,7 @@ export class McpStdioSession {
         capabilities: {},
         clientInfo: {
           name: '@zseven-w/dsh-xcode',
-          version: '0.1.0-rc.1',
+          version: '0.1.0-rc.2',
         },
       },
       this.handshakeTimeoutMs,
