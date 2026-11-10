@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dsh-xcode": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/plugins/xcode/scripts/mcp-server.mjs"]
+    }
+  }
+}

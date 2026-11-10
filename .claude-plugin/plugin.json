@@ -1,0 +1,8 @@
+{
+  "name": "dsh-xcode",
+  "version": "0.1.0-rc.3",
+  "description": "Apple Xcode MCP bridge (xcrun mcpbridge) — sub-second single-file Swift diagnostics, SwiftUI #Preview rendering, warm scheme builds/tests, and local Apple documentation search",
+  "author": {
+    "name": "ZSeven-W"
+  }
+}

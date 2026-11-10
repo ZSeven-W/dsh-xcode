@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Current plugin release: <code>0.1.0-rc.2</code> &middot; Tested with DSH <code>0.2.1-rc.5</code></sub>
+  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; Current plugin release: <code>0.1.0-rc.3</code> &middot; Tested with DSH <code>0.2.1-rc.5</code></sub>
 </p>
 
 <p align="center">
@@ -102,6 +102,20 @@ Pair with `dsh-ios` for full Simulator + USB iPhone streaming alongside Xcode ID
 
 ```sh
 dsh plugin --profile web add @zseven-w/dsh-ios@latest
+```
+
+### Codex / Claude Code / Antigravity / Grok CLI
+
+`dsh-xcode` also ships a standalone zero-dependency MCP stdio server + native Codex &amp; Claude Code plugin manifests ([`INSTALL.md`](./INSTALL.md)):
+
+```sh
+git clone https://github.com/ZSeven-W/dsh-xcode.git
+cd dsh-xcode
+npm run setup                           # One-click Codex plugin install + app-server verification
+node scripts/install-hosts.mjs claude   # Claude Code plugin + permissions
+node scripts/install-hosts.mjs agy      # Antigravity MCP + skill
+node scripts/install-hosts.mjs grok     # Grok CLI MCP
+node scripts/install-hosts.mjs all      # All four hosts at once
 ```
 
 ## Quick start

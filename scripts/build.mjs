@@ -1,7 +1,7 @@
 // Build the Host entry (lib/index.js + lib/index.d.ts, ESM, host packages external)
 // and the browser module (lib/client.js) in the loader shape dsh-web requires:
 // `window.__ModuleLoader__.load({ id, factory })`, keeping React external.
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { chmod, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { build } from 'esbuild'
@@ -11,6 +11,7 @@ const manifest = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'))
 
 await rm(join(root, 'lib'), { recursive: true, force: true })
 await mkdir(join(root, 'lib'), { recursive: true })
+await mkdir(join(root, 'plugins/xcode/scripts'), { recursive: true })
 
 await build({
   entryPoints: [join(root, 'src/index.ts')],
@@ -22,6 +23,22 @@ await build({
   external: ['@deepseek-ai/*'],
   logLevel: 'warning',
 })
+
+for (const outfile of [
+  join(root, 'lib/mcp-server.js'),
+  join(root, 'plugins/xcode/scripts/mcp-server.mjs'),
+]) {
+  await build({
+    entryPoints: [join(root, 'src/mcp-server.ts')],
+    outfile,
+    bundle: true,
+    platform: 'node',
+    format: 'esm',
+    target: 'node22',
+    logLevel: 'warning',
+  })
+  await chmod(outfile, 0o755)
+}
 
 const dts = [
   'export declare const name = "dsh-xcode";',
@@ -98,4 +115,4 @@ await writeFile(join(root, 'lib/client.js'), [
   '',
 ].join('\n'))
 
-console.log('built lib/index.js, lib/index.d.ts, and lib/client.js')
+console.log('built lib/index.js, lib/index.d.ts, lib/client.js, lib/mcp-server.js, and plugins/xcode/scripts/mcp-server.mjs')

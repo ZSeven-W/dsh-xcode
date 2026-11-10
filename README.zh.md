@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; 当前插件版本：<code>0.1.0-rc.2</code> &middot; 已在 DSH <code>0.2.1-rc.5</code> 验证</sub>
+  <sub>npm: <code>@zseven-w/dsh-xcode</code> &middot; 当前插件版本：<code>0.1.0-rc.3</code> &middot; 已在 DSH <code>0.2.1-rc.5</code> 验证</sub>
 </p>
 
 <p align="center">
@@ -102,6 +102,20 @@ dsh web
 
 ```sh
 dsh plugin --profile web add @zseven-w/dsh-ios@latest
+```
+
+### Codex / Claude Code / Antigravity / Grok CLI 一键安装
+
+仓库同时内置零依赖 MCP 服务与 Codex / Claude Code 原生插件清单（详见 [`INSTALL.md`](./INSTALL.md)），一行命令即可装进其他宿主：
+
+```sh
+git clone https://github.com/ZSeven-W/dsh-xcode.git
+cd dsh-xcode
+npm run setup                           # 一键安装 Codex 插件（dsh-xcode@zseven-xcode）并通过 app-server 校验
+node scripts/install-hosts.mjs claude   # 一键安装 Claude Code 插件 + 权限白名单
+node scripts/install-hosts.mjs agy      # 一键安装 Antigravity MCP + Skill
+node scripts/install-hosts.mjs grok     # 一键安装 Grok CLI MCP
+node scripts/install-hosts.mjs all      # 四个宿主一次装齐
 ```
 
 ## 快速上手

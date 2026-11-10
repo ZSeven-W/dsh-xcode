@@ -1,0 +1,54 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dsh-xcode",
+  "version": "0.1.0-rc.3",
+  "description": "Connect Codex to Apple's official Xcode MCP bridge (xcrun mcpbridge) for sub-second single-file Swift diagnostics, native SwiftUI #Preview rendering, warm incremental builds and tests, and Apple Developer Documentation search.",
+  "author": {
+    "name": "ZSeven-W",
+    "url": "https://github.com/ZSeven-W"
+  },
+  "repository": "https://github.com/ZSeven-W/dsh-xcode",
+  "homepage": "https://github.com/ZSeven-W/dsh-xcode",
+  "license": "MIT",
+  "keywords": [
+    "xcode",
+    "ios",
+    "macos",
+    "swift",
+    "swiftui",
+    "mcp",
+    "mcpbridge",
+    "codex"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "onboardingSkill": "./skills/xcode-bridge/SKILL.md",
+      "interface": {
+        "displayName": "DSH Xcode Bridge",
+        "shortDescription": "Live Xcode diagnostics, SwiftUI #Preview rendering, and scheme builds via xcrun mcpbridge",
+        "longDescription": "Connect Codex directly to Apple's official Xcode Model Context Protocol bridge (xcrun mcpbridge) with automatic tabIdentifier routing and Xcode 26 structuredContent normalization. Check single-file Swift compiler issues in sub-seconds without a full build, render SwiftUI #Preview macros to PNG snapshots, run warm incremental builds and XCTest/Swift Testing suites, and search local Apple documentation.",
+        "developerName": "ZSeven-W",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Single-file Swift diagnostics",
+          "Render SwiftUI #Preview",
+          "Incremental scheme builds & tests",
+          "Search local Apple documentation",
+          "Sync Apple SKILL.md bundles"
+        ],
+        "websiteURL": "https://github.com/ZSeven-W/dsh-xcode",
+        "defaultPrompt": [
+          "Check Xcode bridge status and list open project windows.",
+          "Run single-file Xcode diagnostics on the active Swift file and fix any compiler errors.",
+          "Render the SwiftUI #Preview for the current view and inspect its layout."
+        ],
+        "brandColor": "#149EF0",
+        "composerIcon": "./assets/icon.svg",
+        "composerIconDark": "./assets/icon.svg",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo.png"
+      }
+    }
+  }
+}

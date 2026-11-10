@@ -1,0 +1,15 @@
+{
+  "name": "dsh-xcode",
+  "owner": {
+    "name": "ZSeven-W"
+  },
+  "description": "Apple Xcode MCP bridge (xcrun mcpbridge) and Apple Skills for Claude Code, Codex, and DeepSeek Harness",
+  "plugins": [
+    {
+      "name": "dsh-xcode",
+      "source": "./",
+      "description": "Sub-second single-file Swift diagnostics, native SwiftUI #Preview rendering, warm scheme builds and tests, and local Apple documentation search via xcrun mcpbridge",
+      "category": "development"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@zseven-w/dsh-xcode",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.3",
   "description": "DeepSeek Harness (DSH) plugin for Apple's official Xcode MCP bridge (xcrun mcpbridge) and Apple Skills — sub-second single-file compiler diagnostics, native SwiftUI #Preview rendering, warm scheme builds and tests, local Apple documentation search, and live pairing with dsh-ios.",
   "license": "MIT",
   "repository": {
@@ -15,12 +15,16 @@
   "packageManager": "pnpm@11.21.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "bin": {
+    "dsh-xcode-mcp": "./lib/mcp-server.js"
+  },
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
     "./client": "./lib/client.js",
+    "./mcp-server": "./lib/mcp-server.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg",
     "./package.json": "./package.json"
@@ -31,6 +35,13 @@
     "locale/*.json",
     "icon.svg",
     "cordis.patch.yml",
+    ".agents/**",
+    ".claude-plugin/**",
+    ".mcp.json",
+    "plugins/xcode/**",
+    "skills/**",
+    "scripts/install-hosts.mjs",
+    "INSTALL.md",
     "README.md",
     "README.*.md",
     "LICENSE"
@@ -62,6 +73,11 @@
     "typecheck": "tsc --noEmit",
     "test": "pnpm run build && node --test test/*.test.mjs",
     "smoke:pack": "node scripts/smoke-pack.mjs",
+    "setup": "node scripts/install-hosts.mjs codex",
+    "setup:codex": "pnpm run build && node scripts/install-hosts.mjs codex",
+    "setup:claude": "pnpm run build && node scripts/install-hosts.mjs claude",
+    "setup:all": "pnpm run build && node scripts/install-hosts.mjs all",
+    "host-check:codex": "node scripts/install-hosts.mjs verify-codex",
     "prepack": "pnpm run build && pnpm run typecheck",
     "prepublishOnly": "pnpm test && pnpm run smoke:pack"
   },

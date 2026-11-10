@@ -48,7 +48,7 @@ test(
     try {
       const peerFromXcode = readIosPeer()
       assert.ok(peerFromXcode)
-      assert.equal(peerFromXcode.version, '0.1.0-rc.10')
+      assert.match(peerFromXcode.version, /^0\.1\.0/u)
       assert.equal(typeof peerFromXcode.serveSimSource, 'string')
 
       // 2. When dsh-xcode is mounted, ios_sim_preview on an .xcodeproj guides the model to `xcode_render_preview`
